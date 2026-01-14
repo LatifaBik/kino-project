@@ -1,9 +1,10 @@
 {
-  "name": "kino_webbsajt",
+
+  "name": "kino_project",
    "type": "module",
   "version": "1.0.0",
   "description": "Uppgiften går ut på att i grupp planera, strukturera och påbörja utvecklingen av en biograf-webbsajt enligt Scrum-metodik.",
-  "main": "index.js",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
@@ -11,7 +12,7 @@
     "preview": "vite preview",
     "sass-watch": "sass --watch src/main.scss:css/main.css",
     "prepare": "husky",
-    "start": "node ."
+    "server": "node static-http-server/static.js"
   },
   "repository": {
     "type": "git",
