@@ -2,8 +2,9 @@ import express from 'express';
 import fs from 'fs/promises';
 
 const app = express();
+const PORT = process.env.PORT || 5080;
 
-app.use('/', express.static('.'));
+app.use(express.static("."));
 
 app.get('/', async (req, res) => {
   const content = await fs.readFile('./index.html');
@@ -24,5 +25,7 @@ app.get('/style.css', async (req, res) => {
   res.send(css);
 });
 
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
+});
 
-app.listen(5080);

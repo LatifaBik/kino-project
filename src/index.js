@@ -1,4 +1,4 @@
-import "./sections/main.scss";
+/*import "./sections/main.scss";*/
 
 import { initMemberPage } from '../scripts/member-page.js';
 
