@@ -1,6 +1,39 @@
 import fs from 'fs/promises';
 
-const HEADER = {
+
+
+const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
+
+
+export async function loadMovies() {
+  const res = await fetch(API_BASE + '/movies');
+  const payload = await res.json();
+  return payload.data;
+}
+
+export async function loadMovie(id) {
+  const res = await fetch(API_BASE + '/movies/' + id);
+  const payload = await res.json();
+  return payload.data;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Header
+/*const HEADER = {
     logo: {
   href: "/",
   alt: "Kino Lycksele"
@@ -31,7 +64,7 @@ const HEADER = {
 
 
 export default function renderPage(res, page) {
-  const theme = "light"; // börja enkelt
+  const theme = "light"; 
 
   res.render(page, {
     menuToggle: HEADER.menuToggle,
@@ -39,17 +72,6 @@ export default function renderPage(res, page) {
     headerButtons: HEADER.buttons,
     theme
   });
-}
+}*/
 
 
-export default async function renderPage(response, page) {
-  response.render(page, {
-    menuItems: MENU.map((item) => {
-      return {
-        label: item.label,
-        link: item.link,
-        active: item.id == page,
-      };
-    })
-  });
-}
