@@ -1,9 +1,8 @@
 
-<link rel="stylesheet" href="/static/main.css">
-* charset "UTF-8";
-body {
-  margin: 0;
-}
+<link rel ="stylesheet" href="/static/main.css">
+
+
+
 
 @keyframes noticeIn {
   to {
@@ -157,7 +156,7 @@ body.light .header__nav a {
   width: 100%;
   object-fit: contain;
   max-width: 270px;
-  padding: 1rem 18rem 3rem;
+  padding: 1rem 10rem 3rem;
 }
 .header__nav img {
   padding-top: 4rem;
@@ -287,7 +286,25 @@ body.light .header__nav-logolight {
   cursor: pointer;
   text-transform: uppercase;
 }
+.header__movies-btn {
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
 
+.open-register {
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
 
 .footer__container {
   display: flex;
