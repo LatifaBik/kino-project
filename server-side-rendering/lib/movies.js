@@ -13,7 +13,6 @@ export async function loadMovie(id) {
   const payload = await res.json();
   return payload.data;
 }
-
 //Header
 const HEADER = {
     logo: {
@@ -31,13 +30,13 @@ const HEADER = {
     id: "theme-toggle",
     action: "toggle-theme",
     icon: {
-      light: "/assets/toggle2-light.png",
-      dark: "/assets/icons/theme-dark.svg",
+      light: "/static/assets/toggle2-light.png",
+      dark: "/static/assets/icons/theme-dark.svg",
     },
     alt: "Toggle theme"
   },
   buttons: [
-    { label: "Home", id: "btn-home", action: "navigate", target: "/" },
+    { label: "movie-list", id: "btn-home", action: "navigate", target: "/" },
     { label: "Member", id: "btn-member", action: "navigate", target: "/member" },
     { label: "Join / Login", id: "btn-login", action: "modal", target: "login" }
   ]
@@ -54,9 +53,5 @@ export default function renderPage(res, page) {
   });
 }
 
-app.engine("handlebars", engine({
-  defaultLayout: "main",
-  layoutsDir: "./server-side-rendering/templates/layout",
-  partialsDir: "./server-side-rendering/templates/partials",
-}));
+ 
 

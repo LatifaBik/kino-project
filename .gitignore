@@ -3,4 +3,5 @@ src/*.sass
 *main.css.map
 node_modules/
 *.map
+footer.handlebars
 
