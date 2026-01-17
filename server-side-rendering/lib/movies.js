@@ -1,9 +1,6 @@
 import fs from 'fs/promises';
 
-
-
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
-
 
 export async function loadMovies() {
   const res = await fetch(API_BASE + '/movies');
@@ -17,23 +14,8 @@ export async function loadMovie(id) {
   return payload.data;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Header
-/*const HEADER = {
+const HEADER = {
     logo: {
   href: "/",
   alt: "Kino Lycksele"
@@ -54,14 +36,12 @@ export async function loadMovie(id) {
     },
     alt: "Toggle theme"
   },
-
   buttons: [
     { label: "Home", id: "btn-home", action: "navigate", target: "/" },
     { label: "Member", id: "btn-member", action: "navigate", target: "/member" },
     { label: "Join / Login", id: "btn-login", action: "modal", target: "login" }
   ]
 };
-
 
 export default function renderPage(res, page) {
   const theme = "light"; 
@@ -72,6 +52,11 @@ export default function renderPage(res, page) {
     headerButtons: HEADER.buttons,
     theme
   });
-}*/
+}
 
+app.engine("handlebars", engine({
+  defaultLayout: "main",
+  layoutsDir: "./server-side-rendering/templates/layout",
+  partialsDir: "./server-side-rendering/templates/partials",
+}));
 
