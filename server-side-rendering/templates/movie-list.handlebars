@@ -1,19 +1,21 @@
 
-<a href="/">Back to front site</a>
-<br>
-<br>
-Welcome to our website!
 
+<a href="/" class="movies-back-link">← Back to front site</a>
 
+<p class="movies-intro">Select a movie to view details</p>
 
-<ul>
-{{#each movies }}
-  <li>
-    <a href="/movies/{{ this.id }}">
-      {{ this.attributes.title }}
-    </a>
-  </li>
-{{/each}}
+<ul class="movies-list">
+  {{#each movies}}
+    <li class="movies-list__item">
+      <a
+        href="/movies/{{ this.id }}"
+        class="movies-list__link"
+      >
+        {{ this.attributes.title }}
+      </a>
+    </li>
+  {{/each}}
 </ul>
+
 
 
