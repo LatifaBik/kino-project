@@ -12,6 +12,15 @@ app.use("/static", express.static("./server-side-rendering/static"));
 
 /*app.use(express.static("."));*/
 
+
+//för att få fram front sida
+import path from "path";
+
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve("index.html"));
+});
+
+
 app.engine("handlebars", engine({
   defaultLayout: "main",
   layoutsDir: "./server-side-rendering/templates/layout",
@@ -21,8 +30,6 @@ app.engine("handlebars", engine({
 app.set("view engine", "handlebars");
 app.set("views", "./server-side-rendering/templates");
 
-//för att få routen fungerar??
-app.get("/", (req, res) => res.redirect("/movies"));
 
 app.get("/movies", async (req, res) => {
   const movies = await loadMovies();
