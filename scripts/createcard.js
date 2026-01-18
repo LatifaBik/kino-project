@@ -1,16 +1,52 @@
+
+
+
+/*export function createMovieCard(movie, prefix = "movie") {
+
+  const card = document.createElement("article");
+  card.classList.add("movies-carousel__card");
+  card.dataset.id = movie.id;
+
+  const poster = movie.attributes?.Movie_Poster_Link ?? "";
+
+  const img = document.createElement("img");
+  img.classList.add("movies-carousel__poster");
+  img.src = poster;
+img.alt = `${movie.attributes?.Movie_Series_Title ?? "Movie"} poster`;
+
+  /*img.src = movie.Poster_Link;
+  img.alt = `${movie.Series_Title} poster`;*/
+
+  /*const title = document.createElement("h3");
+  title.classList.add("movies-carousel__title");
+  title.textContent = movie.attributes?.Movie_Series_Title ?? "Untitled"; 
+  /*title.textContent = movie.Series_Title;*/ 
+
+  
+  /*const titleText = movie.attributes?.Movie_Series_Title ?? "Untitled";
+  const poster = movie.attributes?.Movie_Poster_Link ?? "";
+  const year = movie.attributes?.Released_Year ?? "";*/
+
+  
 export function createMovieCard(movie, prefix = "movie") {
+  const titleText = movie.Movie_Series_Title ?? "Untitled";
+const poster = movie.Movie_Poster_Link ?? "";
+const year = movie.Released_Year ?? "";
+
+
   const card = document.createElement("article");
   card.classList.add("movies-carousel__card");
   card.dataset.id = movie.id;
 
   const img = document.createElement("img");
   img.classList.add("movies-carousel__poster");
-  img.src = movie.Poster_Link;
-  img.alt = `${movie.Series_Title} poster`;
+  img.src = poster;
+  img.alt = `${titleText} poster`;
 
   const title = document.createElement("h3");
   title.classList.add("movies-carousel__title");
-  title.textContent = movie.Series_Title;
+  title.textContent = titleText;
+
 
   const actions = document.createElement("div");
   actions.classList.add("movies-carousel__actions");
@@ -35,6 +71,9 @@ export function createMovieCard(movie, prefix = "movie") {
   detailsDiv.classList.add("movie-details-info");
   detailsDiv.style.display = "none";
   detailsDiv.innerHTML = `<p>${movie.Overview || "Ingen beskrivning tillgänglig."}</p>`;
+
+  //??
+card.dataset.id = movie.Movie_id;
 
   actions.append(trailerBtn, detailsBtn);
   card.append(img, title, actions, detailsDiv);

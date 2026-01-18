@@ -1,4 +1,7 @@
 export async function filterDay(){
+
+    const poster = movie.Movie_Poster_Link;
+    
     const daySelector = document.getElementById('dayFilter'); 
     const currentTrack = document.getElementById('currentMoviesTrack');
     // Cache to store movies for each day

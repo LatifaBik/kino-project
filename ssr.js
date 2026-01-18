@@ -12,6 +12,10 @@ app.use("/static", express.static("./server-side-rendering/static"));
 
 /*app.use(express.static("."));*/
 
+app.use("/src", express.static("./src"));
+app.use("/scripts", express.static("./scripts"));
+app.use("/mockup_Data", express.static("./mockup_Data")); // om du fetchar därifrån
+
 
 //för att få fram front sida
 import path from "path";

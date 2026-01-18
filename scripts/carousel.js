@@ -1,9 +1,12 @@
 import { fetchMovies } from "./api.js";
 
 export async function movieCarousel(movies) {
+
+
+
     // 1. Define heroInner inside the function
     const heroInner = document.getElementById("heroInner");
-    
+
     // 2. Locate buttons outside the inner container
     const prevBtn = document.querySelector('.carousel_control.prev');
     const nextBtn = document.querySelector('.carousel_control.next');
@@ -22,24 +25,39 @@ export async function movieCarousel(movies) {
 
     if (heroInner && movies.length > 0) {
         const heroMovies = [...movies].sort(() => Math.random() - 0.5).slice(0, 6);
-        
-        // Injecting images into the container
-        heroInner.innerHTML = heroMovies.map((movie, index) => {
-            const { category, class: categoryClass } = getAgeCategory(movie.Certificate);
+
+        heroInner.innerHTML = movies.map(movie => {
+            const poster = movie.Movie_Poster_Link ?? "";
+            const title = movie.Movie_Series_Title ?? "Untitled";
+            const year = movie.Released_Year ?? "";
+
 
             return `
-                <div class="carousel_slide ${index === 0 ? 'active' : ''}" style="background-image: url('${movie.Poster_Link}')">
-                    <div class="slide_content">
-                        <h1 class="film_title">${movie.Series_Title}</h1>
-                        <div class="festival_dates">
-                            <h2>Released: ${movie.Released_Year}</h2>
-                            <h3>${category ? `<span class="certificate-badge ${categoryClass}">${category}</span>` : ''}</h3><br>
-                        </div>
-                    </div>
-                </div>`;
-        }).join('');
+    <div class="carousel__slide" style="background-image:url('${poster}')">
+      <h1>${title}</h1>
+      <h2>Released: ${year}</h2>
+    </div>
+  `;
+        }).join("");
 
-        const slides = heroInner.querySelectorAll('.carousel_slide');
+
+        // Injecting images into the container
+        /* heroInner.innerHTML = heroMovies.map((movie, index) => {
+             const { category, class: categoryClass } = getAgeCategory(movie.Certificate);
+ 
+             return `
+                 <div class="carousel_slide ${index === 0 ? 'active' : ''}" style="background-image: url('${movie.Poster_Link}')">
+                     <div class="slide_content">
+                         <h1 class="film_title">${movie.Series_Title}</h1>
+                         <div class="festival_dates">
+                             <h2>Released: ${movie.Released_Year}</h2>
+                             <h3>${category ? `<span class="certificate-badge ${categoryClass}">${category}</span>` : ''}</h3><br>
+                         </div>
+                     </div>
+                 </div>`;
+         }).join('');  */
+
+        const slides = heroInner.querySelectorAll('.carousel__slide');
         let currentSlide = 0;
 
         function showSlide(index) {

@@ -324,10 +324,11 @@ body.light .header__nav-logolight {
   background: transparent;
   color: #fff;
   border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+  padding: .6rem 1.2rem;
+  font-size: 2rem;
   cursor: pointer;
   text-transform: uppercase;
+  margin-left: 40rem;
 }
 .header__nav {
   opacity: 0;
@@ -749,9 +750,9 @@ body {
   background: transparent;
   color: #fff;
   border: none;
-  padding: 0.6rem 1rem;
-  margin-right: 2rem;
-  margin-top: 1rem;
+  padding: 0.6rem 0.8rem;
+  margin-right: 0.2rem;
+  margin-top: 0.2rem;
   font-size: 0.9rem;
   cursor: pointer;
   text-transform: uppercase;

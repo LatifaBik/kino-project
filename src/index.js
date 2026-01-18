@@ -20,6 +20,7 @@ closeNotice();
 import { toggleTheme } from '../scripts/tema.js';
 toggleTheme();
 
+
 import { fetchMovies } from "../scripts/api.js";
 import { renderMovieList } from "../scripts/createcard.js";
 import { openTrailer } from "../scripts/trailermodal.js"; 
@@ -72,8 +73,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (btn.textContent === "Trailer") {
         const movieId = Number(btn.dataset.id);
 
-        const movie = movies.find(m => m.id === movieId);
-
+        const movie = movies.find(m => m.Movie_id === movieId);
+        
         if (!movie?.Trailer_Id) {
           alert("Trailer saknas");
           return;
