@@ -1,5 +1,5 @@
 
-<a href="/movies">Back to movie site</a>
+<a href="/movies"> ← Back to movie site</a>
 
 <article class="movie">
   <h1>{{ movie.attributes.title }}</h1>
@@ -7,6 +7,6 @@
     {{{ movie.attributes.intro }}}
   </div>
   {{#if movie.attributes.image }}
-  <img src="{{ movie.attributes.image.url }}">
+  <img class="movie-image" src="{{ movie.attributes.image.url }}">
   {{/if }}
 </article>

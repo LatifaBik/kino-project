@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve("index.html"));
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve("member-page.html"));
+});
+
 
 app.engine("handlebars", engine({
   defaultLayout: "main",
@@ -35,16 +39,32 @@ app.set("view engine", "handlebars");
 app.set("views", "./server-side-rendering/templates");
 
 
-app.get("/movies", async (req, res) => {
+/*app.get("/movies", async (req, res) => {
   const movies = await loadMovies();
   res.render("movie-list", { movies });
 });
 
-
 app.get("/movies/:movieId", async (req, res) => {
   const movie = await loadMovie(req.params.movieId);
   res.render("movie-detail", { movie });
-});
+});*/
+
+app.get("/movies", async (req, res) => {
+  const movies = await loadMovies()
+  res.render("movie-list", {
+    pageTitle: "The Movie Site",
+    movies
+  })
+})
+
+app.get("/movies/:movieId", async (req, res) => {
+  const movie = await loadMovie(req.params.movieId)
+  res.render("movie-detail", {
+    pageTitle: "The Movie Detail",
+    movie
+  })
+})
+
 
 
 

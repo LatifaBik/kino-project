@@ -13,6 +13,8 @@ export async function loadMovie(id) {
   const payload = await res.json();
   return payload.data;
 }
+
+
 //Header
 const HEADER = {
     logo: {

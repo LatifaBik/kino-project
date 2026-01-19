@@ -31,7 +31,8 @@
   list-style: none;
   padding: 2rem 6rem;
   margin: 2rem;
-
+    max-width: 1400px;
+  margin-left: auto;
   column-count: 3;        /* antal kolumner */
   column-gap: 3rem;
    max-height: 18em;  /* justera tills ~5 li ryms */
