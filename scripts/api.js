@@ -23,12 +23,9 @@ export async function fetchMovies() {
   return payload.data.map(item => {
     const a = item.attributes ?? {};
 
-  
 
     return {
       Movie_Id: item.id,
-
-       
 
       // Anpassa dessa nycklar efter vad som faktiskt finns i attributes:
       Movie_Series_Title: a.title ?? a.Movie_Series_Title ?? a.name,
