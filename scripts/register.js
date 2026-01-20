@@ -4,11 +4,15 @@ export function toggleRegister() {
 
   const modal = document.querySelector('.register__modal');
   const openBtn = document.querySelector('.open-register');
+ 
+
   const closeBtn = document.querySelector('.register__close');
   const submit = document.querySelector('.register__submit');
 
-  openBtn.addEventListener('click', () => {
-    modal.style.display = 'flex'; 
+ if (!openBtn || !modal) return;   
+
+  openBtn.addEventListener("click", () => {  
+    modal.classList.toggle("open");
   });
 
   closeBtn.addEventListener('click', () => {

@@ -1,38 +1,8 @@
-
-
-
-/*export function createMovieCard(movie, prefix = "movie") {
-
-  const card = document.createElement("article");
-  card.classList.add("movies-carousel__card");
-  card.dataset.id = movie.id;
-
-  const poster = movie.attributes?.Movie_Poster_Link ?? "";
-
-  const img = document.createElement("img");
-  img.classList.add("movies-carousel__poster");
-  img.src = poster;
-img.alt = `${movie.attributes?.Movie_Series_Title ?? "Movie"} poster`;
-
-  /*img.src = movie.Poster_Link;
-  img.alt = `${movie.Series_Title} poster`;*/
-
-  /*const title = document.createElement("h3");
-  title.classList.add("movies-carousel__title");
-  title.textContent = movie.attributes?.Movie_Series_Title ?? "Untitled"; 
-  /*title.textContent = movie.Series_Title;*/ 
-
-  
-  /*const titleText = movie.attributes?.Movie_Series_Title ?? "Untitled";
-  const poster = movie.attributes?.Movie_Poster_Link ?? "";
-  const year = movie.attributes?.Released_Year ?? "";*/
-
   
 export function createMovieCard(movie, prefix = "movie") {
-  const titleText = movie.Movie_Series_Title ?? "Untitled";
-const poster = movie.Movie_Poster_Link ?? "";
-const year = movie.Released_Year ?? "";
-
+  const titleText = movie.title ?? "Untitled";
+  const poster = movie.poster ?? "";
+  const year = movie.year ?? "";
 
   const card = document.createElement("article");
   card.classList.add("movies-carousel__card");
@@ -47,7 +17,6 @@ const year = movie.Released_Year ?? "";
   title.classList.add("movies-carousel__title");
   title.textContent = titleText;
 
-
   const actions = document.createElement("div");
   actions.classList.add("movies-carousel__actions");
 
@@ -58,27 +27,24 @@ const year = movie.Released_Year ?? "";
   trailerBtn.dataset.id = movie.id;
 
   const detailsBtn = document.createElement("button");
-  //Added 'details-btn' class and 'data-prefix'
-  detailsBtn.classList.add("movies-carousel__button", "details-btn"); 
+  detailsBtn.classList.add("movies-carousel__button", "details-btn");
   detailsBtn.type = "button";
   detailsBtn.textContent = "Detaljer ▼";
   detailsBtn.dataset.id = movie.id;
   detailsBtn.dataset.prefix = prefix;
 
-  // Create the hidden info div 
   const detailsDiv = document.createElement("div");
   detailsDiv.id = `${prefix}-details-${movie.id}`;
   detailsDiv.classList.add("movie-details-info");
   detailsDiv.style.display = "none";
-  detailsDiv.innerHTML = `<p>${movie.Overview || "Ingen beskrivning tillgänglig."}</p>`;
-
-  //??
-card.dataset.id = movie.Movie_id;
+  detailsDiv.innerHTML = `<p>${movie.overview || "Ingen beskrivning tillgänglig."}</p>`;
 
   actions.append(trailerBtn, detailsBtn);
   card.append(img, title, actions, detailsDiv);
+
   return card;
 }
+
 
 export function renderMovieList(trackEl, list, prefix = "movie") {
   if (!trackEl) return;

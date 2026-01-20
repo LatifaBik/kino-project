@@ -885,6 +885,8 @@ body {
   width: 100%;
   max-width: 1000px;
   height: 450px;
+   aspect-ratio: 16 / 9;
+  height: auto;
   margin: 20px auto;
   overflow: hidden;
   border: 5px solid #e0e0e0;
@@ -895,7 +897,9 @@ body {
   inset: 0;
   opacity: 0;
   transition: opacity 0.8s;
-  background-size: cover;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-color: #000;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -1031,14 +1035,21 @@ body {
   gap: 16px;
   align-items: stretch;
   overflow: hidden;
-  justify-content: center;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
 }
+.movies-carousel__track::-webkit-scrollbar { display: none; }
+.movies-carousel__track { -ms-overflow-style: none; scrollbar-width: none; }
+
 .movies-carousel__card {
   flex: 0 0 160px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
+.movie-card__img { width:100%; aspect-ratio:2/3; object-fit:cover; display:block; }
+
 .movies-carousel__poster {
   width: 100%;
   aspect-ratio: 2/3;

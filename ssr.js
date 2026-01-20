@@ -2,9 +2,6 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import { loadMovie, loadMovies } from './server-side-rendering/lib/movies.js';
 
-
-
-
 const app = express();
 app.use("/static", express.static("./server-side-rendering/static"));
 
@@ -22,9 +19,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve("index.html"));
 });
 
-app.get("/", (req, res) => {
+app.get("/member", (req, res) => {
   res.sendFile(path.resolve("member-page.html"))
-})
+});
     
 
 
