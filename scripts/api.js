@@ -19,5 +19,4 @@ export async function fetchMovies() {
       year: a.publishedAt ? new Date(a.publishedAt).getFullYear() : "", 
       imdbId: a.imdbId ?? null,
     };
-  });
-}
+  })};

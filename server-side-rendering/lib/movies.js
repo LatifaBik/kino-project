@@ -1,59 +1,36 @@
-import fs from 'fs/promises';
-
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
-export async function loadMovies() {
+/*export*/
+async function loadMovies() {
   const res = await fetch(API_BASE + '/movies');
   const payload = await res.json();
-  return payload.data;
+  return payload.data.map(flattenMovie);  //nytt 
+  /*return payload.data;*/
 }
 
-export async function loadMovie(id) {
+
+/*export*/
+async function loadMovie(id) {
   const res = await fetch(API_BASE + '/movies/' + id);
   const payload = await res.json();
-  return payload.data;
+  return flattenMovie(payload.data);  //nytt  
+  //   /*return payload.data;*/
+}
+function flattenMovie(movie) {
+  return {
+    id: movie.id,
+    ...movie.attributes,
+  };
 }
 
-
-//Header
-const HEADER = {
-    logo: {
-  href: "/",
-  alt: "Kino Lycksele"
-},
-
-  menuToggle: {
-    id: "menu-toggle",
-    action: "toggle-menu",
-    label: "MENY"
-  },
-
-  themeToggle: {
-    id: "theme-toggle",
-    action: "toggle-theme",
-    icon: {
-      light: "/static/assets/toggle2-light.png",
-      dark: "/static/assets/icons/theme-dark.svg",
-    },
-    alt: "Toggle theme"
-  },
-  buttons: [
-    { label: "movie-list", id: "btn-home", action: "navigate", target: "/" },
-    { label: "Member", id: "btn-member", action: "navigate", target: "/member" },
-    { label: "Join / Login", id: "btn-login", action: "modal", target: "login" }
-  ]
+const api = {
+  loadMovie,
+  loadMovies,
 };
 
-export default function renderPage(res, page) {
-  const theme = "light"; 
+export default api;
 
-  res.render(page, {
-    menuToggle: HEADER.menuToggle,
-    themeToggle: HEADER.themeToggle,
-    headerButtons: HEADER.buttons,
-    theme
-  });
-}
+
 
  
 
