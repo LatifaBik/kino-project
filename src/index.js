@@ -7,6 +7,7 @@ import { toggleMenu } from "../scripts/menu.js";
 import { closeNotice } from "../scripts/notice.js";
 import { toggleTheme } from "../scripts/tema.js";
 
+
 import { fetchMovies } from "../scripts/api.js";
 import { renderMovieList } from "../scripts/createcard.js";
 import { movieCarousel } from "../scripts/carousel.js";

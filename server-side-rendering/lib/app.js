@@ -2,8 +2,9 @@ import express from "express";
 import { engine } from "express-handlebars";
 import path from "path";
 
+
 export default function initApp(api) {
-  const app = express();
+  const app = express(); 
 
   app.engine(
     "handlebars",
@@ -19,13 +20,42 @@ export default function initApp(api) {
 
   app.use("/static", express.static("./server-side-rendering/static"));
 
-  app.get("/movies", async (req, res) => {
+
+ app.get("/movies", async (req, res) => {
     const movies = await api.loadMovies();
     res.render("movie-list", {
       pageTitle: "The Movie Site",
       movies,
     });
   });
+
+  //nytt
+
+/* app.get("/movies", async (req, res, next) => {
+  try {
+    const movies = await api.loadMovies();
+    res.render("movie-list", { movies });
+  } catch (e) {
+    next(e);
+  }
+});*/
+ //nytt
+/*app.get("/movies", async (req, res, next) => {
+  try {
+    res.set("Cache-Control", "no-store, max-age=0");
+    res.set("Pragma", "no-cache");
+    res.set("Expires", "0");
+
+    const movies = await api.loadMovies();
+
+    res.render("movie-list", { movies });
+  } catch (e) {
+    next(e);
+  }
+});*/
+
+
+
 
   app.get("/movies/:movieId", async (req, res) => {
     const movie = await api.loadMovie(req.params.movieId);
