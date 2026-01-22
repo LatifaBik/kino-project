@@ -22,23 +22,27 @@ export default function initApp(api) {
 
 
  app.get("/movies", async (req, res) => {
-    const movies = await api.loadMovies();
-    res.render("movie-list", {
-      pageTitle: "The Movie Site",
-      movies,
-    });
-  });
+  const payload = await api.loadMovies();
 
-  //nytt
+  const movies = payload.data.map(m => ({
+    id: m.id,
+    ...m.attributes,
+  }));
 
-/* app.get("/movies", async (req, res, next) => {
-  try {
-    const movies = await api.loadMovies();
-    res.render("movie-list", { movies });
-  } catch (e) {
-    next(e);
-  }
-});*/
+  res.render("movie-list", { movies });
+});
+
+app.get("/movies/:movieId", async (req, res) => {
+  const payload = await api.loadMovie(req.params.movieId);
+
+  const movie = {
+    id: payload.data.id,
+    ...payload.data.attributes,
+  };
+
+  res.render("movie-detail", { movie });
+});
+
  //nytt
 /*app.get("/movies", async (req, res, next) => {
   try {
@@ -54,16 +58,13 @@ export default function initApp(api) {
   }
 });*/
 
-
-
-
-  app.get("/movies/:movieId", async (req, res) => {
+  /*app.get("/movies/:movieId", async (req, res) => {
     const movie = await api.loadMovie(req.params.movieId);
     res.render("movie-detail", {
       pageTitle: "The Movie Detail",
       movie,
     });
-  });
+  });*/
 
   // Front-sidan
   app.use(express.static("."));
