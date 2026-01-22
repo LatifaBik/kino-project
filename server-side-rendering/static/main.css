@@ -20,6 +20,13 @@
   text-decoration: underline;
 }
 
+.movie-back-link {
+  display: inline-block;
+  margin: 1rem;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
 /* Intro text */
 .movies-intro {
   margin: 1.5rem 1rem;
@@ -53,7 +60,29 @@
   color: #fff;
   text-decoration: underline;
 }
+ .movie {
+  background-color: svart;
+  color: vit;
+  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+  padding: 2rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 
+ }
+
+ .movie img {
+  display : block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 1rem;
+ }
+
+ .movie-poster {
+  max-width: 300px;
+} 
+
+ 
 
 @keyframes noticeIn {
   to {

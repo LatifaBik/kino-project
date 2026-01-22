@@ -2,10 +2,13 @@
 
 import { initMemberPage, initMemberButtons } from "../scripts/member-page.js";
 import { toggleLogin } from "../scripts/login.js";
-import { toggleRegister } from "../scripts/register.js";
-import { toggleMenu } from "../scripts/menu.js";
+import { toggleRegister } from '../scripts/register.js';
+toggleRegister();
+import { toggleMenu } from '../scripts/menu.js'; 
+toggleMenu(); 
 import { closeNotice } from "../scripts/notice.js";
-import { toggleTheme } from "../scripts/tema.js";
+import { toggleTheme } from '../scripts/tema.js';
+toggleTheme();
 
 
 import { fetchMovies } from "../scripts/api.js";
