@@ -1,21 +1,18 @@
+extends layout/main
 
-<h1 class="movie-detail">The movie detail</h1>
+block content
+  h1.movie-detail The movie detail
 
-<a href="./" class="movie-back-link"> ← Back to movie site</a>
+  a.movie-back-link(href="/movies") ← Back to movie site
 
+  article.movie
+    h1= movie.title
 
+    if movie.intro
+      .intro= movie.intro
 
-<article class="movie">
-  <h1>{{ movie.title }}</h1>
- {{#if movie.intro}}
-    <div class="intro">{{movie.intro}}</div>
-  {{/if}}
-  
-  {{#if movie.image}}
-  <img src="{{ movie.image.url }}">
-    
-  {{/if}}
-</article> 
+    if movie.image
+      img(src=movie.image.url)
 
 
  

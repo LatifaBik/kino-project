@@ -1,64 +1,69 @@
- <footer>
-    <section class="footer__container">
-      <section class="footer__content">
-        <div class="footer__section footer__section--about">
-          <div class="footer__about"></div>
-          <h3>Om oss</h3>
-          <ul class="footer__links">
-            <li><a href="#">Jobba hos oss</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Om Kino</a></li>
-            <li><a href="#">Filmfestivalen</a></li>
-            <li><a href="#">Hitta hit</a></li>
-          </ul>
-        </div>
+footer
+  section.footer__container
+    section.footer__content
+      .footer__section.footer__section--about
+        .footer__about
+        h3 Om oss
+        ul.footer__links
+          li
+            a(href="#") Jobba hos oss
+          li
+            a(href="#") Press
+          li
+            a(href="#") Om Kino
+          li
+            a(href="#") Filmfestivalen
+          li
+            a(href="#") Hitta hit
 
-        <div class="footer__section footer__section--other">
-          <div class="footer__other"></div>
-          <h3>Övrigt</h3>
-          <ul class="footer__terms">
-            <li><a href="#">Köpvilkor</a></li>
-            <li><a href="#">Integritetspolicy</a></li>
-            <li><a href="#">Åldersgränser</a></li>
-            <li><a href="#">Tillgänglighet</a></li>
-          </ul>
-        </div>
+      .footer__section.footer__section--other
+        .footer__other
+        h3 Övrigt
+        ul.footer__terms
+          li
+            a(href="#") Köpvilkor
+          li
+            a(href="#") Integritetspolicy
+          li
+            a(href="#") Åldersgränser
+          li
+            a(href="#") Tillgänglighet
 
-        <div class="footer__section footer__section--contact">
-          <div class="footer__contact"></div>
-          <h3>Hjälp and Kontakt</h3>
-          <ul class="footer__info">
-            <li><i class="fas fa_map_marker_alt"></i> <a
-                href="https://maps.google.com/?q=Storgatan 12, 123 45 Lycksele">Storgatan 12, 123 45
-                Lycksele</a></li>
-            <li><i class="fas fa_phone"></i> <a href="tel:+46950xxxxxxxx">+46 950-xxxxxxxx</a></li>
-            <li><i class="fas fa_envelope"></i> <a href="mailto:info@kino.com">info@kino.com</a></li>
-          </ul>
-        </div>
+      .footer__section.footer__section--contact
+        .footer__contact
+        h3 Hjälp and Kontakt
+        ul.footer__info
+          li
+            i.fas.fa_map_marker_alt
+            a(
+              href="https://maps.google.com/?q=Storgatan 12, 123 45 Lycksele"
+            ) Storgatan 12, 123 45 Lycksele
+          li
+            i.fas.fa_phone
+            a(href="tel:+46950xxxxxxxx") +46 950-xxxxxxxx
+          li
+            i.fas.fa_envelope
+            a(href="mailto:info@kino.com") info@kino.com
 
-        <div class="footer__section footer__section--social">
-          <div class="footer__social"></div>
-          <h3>Sociala medier</h3>
-          <div class="footer__icons">
-            <div class="social">
-              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
+      .footer__section.footer__section--social
+        .footer__social
+        h3 Sociala medier
+        .footer__icons
+          .social
+            a(href="#", aria-label="X")
+              i.fa-brands.fa-x-twitter
+            a(href="#", aria-label="Facebook")
+              i.fa-brands.fa-facebook-f
+            a(href="#", aria-label="Instagram")
+              i.fa-brands.fa-instagram
 
-        <div class="footer__section footer__section--extra">
-          <div class="footer__extra">
-            <div class="footer__row">
-              <div class="newsletter">
-                <h3 class="newsletter__title">Nyhetsbrev</h3>
-                <input class="newsletter__input" type="email" placeholder="you@example.com">
-                <button class="newsletter__submit" type="submit">Anmäl dig</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-  </footer>
+      .footer__section.footer__section--extra
+        .footer__extra
+          .footer__row
+            .newsletter
+              h3.newsletter__title Nyhetsbrev
+              input.newsletter__input(
+                type="email",
+                placeholder="you@example.com"
+              )
+              button.newsletter__submit(type="submit") Anmäl dig
