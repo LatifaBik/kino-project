@@ -21,27 +21,27 @@ export default function initApp(api) {
   app.use("/static", express.static("./server-side-rendering/static"));
 
 
- app.get("/movies", async (req, res) => {
+app.get("/movies", async (req, res) => {
   const payload = await api.loadMovies();
-
-  const movies = payload.data.map(m => ({
+  const arr = payload?.data ?? payload;          // {data:[...]} eller [...]
+  const movies = (arr ?? []).map(m => ({
     id: m.id,
-    ...m.attributes,
+    ...(m.attributes ?? m),                      // Strapi-objekt eller flattenat
   }));
-
   res.render("movie-list", { movies });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
   const payload = await api.loadMovie(req.params.movieId);
-
+  const m = payload?.data ?? payload;
   const movie = {
-    id: payload.data.id,
-    ...payload.data.attributes,
+    id: m.id,
+    ...(m.attributes ?? m),
   };
-
   res.render("movie-detail", { movie });
 });
+
+
 
  //nytt
 /*app.get("/movies", async (req, res, next) => {
