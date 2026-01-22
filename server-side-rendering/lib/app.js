@@ -25,13 +25,16 @@ app.get("/movies", async (req, res) => {
   const payload = await api.loadMovies();
   const arr = payload?.data ?? payload;          // {data:[...]} eller [...]
   const movies = (arr ?? []).map(m => ({
+   
     id: m.id,
-    ...(m.attributes ?? m),                      // Strapi-objekt eller flattenat
+    ...(m.attributes ?? m),    // Strapi-objekt eller flattenat
   }));
   res.render("movie-list", { movies });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
+
+
   const payload = await api.loadMovie(req.params.movieId);
   const m = payload?.data ?? payload;
   const movie = {
@@ -40,31 +43,6 @@ app.get("/movies/:movieId", async (req, res) => {
   };
   res.render("movie-detail", { movie });
 });
-
-
-
- //nytt
-/*app.get("/movies", async (req, res, next) => {
-  try {
-    res.set("Cache-Control", "no-store, max-age=0");
-    res.set("Pragma", "no-cache");
-    res.set("Expires", "0");
-
-    const movies = await api.loadMovies();
-
-    res.render("movie-list", { movies });
-  } catch (e) {
-    next(e);
-  }
-});*/
-
-  /*app.get("/movies/:movieId", async (req, res) => {
-    const movie = await api.loadMovie(req.params.movieId);
-    res.render("movie-detail", {
-      pageTitle: "The Movie Detail",
-      movie,
-    });
-  });*/
 
   // Front-sidan
   app.use(express.static("."));

@@ -746,6 +746,12 @@ body {
   display: flex;
   align-items: flex-end;
 }
+.header__back-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
 .header__member-btn {
   background: transparent;
   color: #fff;
