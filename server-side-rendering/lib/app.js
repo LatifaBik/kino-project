@@ -10,8 +10,8 @@ export default function initApp(api) {
     "handlebars",
     engine({
       defaultLayout: "main",
-      layoutsDir: "./server-side-rendering/templates/layout",
-      partialsDir: "./server-side-rendering/templates/partials",
+       layoutsDir: "./server-side-rendering/templates/layout",
+    partialsDir: "./server-side-rendering/partials",
     })
   );
 

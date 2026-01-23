@@ -1,7 +1,7 @@
-  import { describe, expect, test } from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import request from 'supertest';
 import initApp from '../server-side-rendering/lib/app.js';
-import fs from 'fs'; // har lagt till denna rad
+/*import fs from 'fs'; // har lagt till denna rad*/
 
 const mockApi = {
   loadMovie: async (id) => {
@@ -9,13 +9,15 @@ const mockApi = {
       data: {
         id: id,
         attributes: {
-          title: "The Godfather",
-          imdbId: "tt0068646",
-          intro: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.\n\n",
-          image: { url: "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_.jpg" },
-          createdAt: "2026-01-15T13:27:00.409Z",
-          updatedAt: "2026-01-15T13:30:26.154Z",
-          publishedAt: "2026-01-15T13:27:05.498Z"
+          title: "Pulp Fiction",
+          imdbId: "tt0110912",
+          intro: "In the realm of underworld, a series of incidents intertwines the lives of two Los Angeles mobsters, a gangster's wife, a boxer and two small-time criminals.",
+          image: {
+            url: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+          },
+          createdAt: "2024-01-22T09:24:08.098Z",
+          updatedAt: "2024-01-22T10:27:28.540Z",
+          publishedAt: "2024-01-22T09:24:10.979Z"
         }
       }
     };
@@ -24,27 +26,31 @@ const mockApi = {
     return {
       data: [
         {
-          id: 12,
+          id: 8,
           attributes: {
-            title: "The Godfather",
-            imdbId: "tt0068646",
-            intro: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.\n\n",
-            image: { url: "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_.jpg" },
-            createdAt: "2026-01-15T13:27:00.409Z",
-            updatedAt: "2026-01-15T13:30:26.154Z",
-            publishedAt: "2026-01-15T13:27:05.498Z"
+            title: "Pulp Fiction",
+            imdbId: "tt0110912",
+            intro: "In the realm of underworld, a series of incidents intertwines the lives of two Los Angeles mobsters, a gangster's wife, a boxer and two small-time criminals.",
+            image: {
+              url: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+            },
+            createdAt: "2024-01-22T09:24:08.098Z",
+            updatedAt: "2024-01-22T10:27:28.540Z",
+            publishedAt: "2024-01-22T09:24:10.979Z"
           }
         },
         {
-          id: 2,
+          id: 6,
           attributes: {
-            title: "Encanto",
-            imdbId: "tt2953050",
-            intro: "A Colombian teenage girl has to face the frustration of being **the only member of her family** without magical powers.\n\n",
-            image: { url: "https://m.media-amazon.com/images/M/MV5BOTY1YmU1ZTItMzNjZC00ZGU0LTk0MTEtZDgzN2QwOWVlNjZhXkEyXkFqcGc@._V1_.jpg" },
-            createdAt: "2023-01-23T06:46:24.765Z",
-            updatedAt: "2025-01-15T10:41:46.386Z",
-            publishedAt: "2023-01-23T06:46:29.324Z"
+            title: "Forrest Gump",
+            imdbId: "tt0109830",
+            intro: "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+            image: {
+              url: "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_.jpg"
+            },
+            createdAt: "2023-03-12T17:06:09.208Z",
+            updatedAt: "2026-01-15T12:46:01.032Z",
+            publishedAt: "2023-03-12T17:06:16.643Z"
           }
         }
       ],
@@ -62,10 +68,9 @@ describe('Movie list page', () => {
       .expect('Content-Type', /html/)
       .expect(200);
 
-    fs.writeFileSync("debug.html", response.text, "utf8"); // samt lagt till denna
-    
 
-    expect(response.text).toContain('Encanto');
-    expect(response.text).toContain('The Godfather');
+    expect(response.text).toContain('Forrest Gump');
+    expect(response.text).toContain('Pulp Fiction');
   });
 });
+
