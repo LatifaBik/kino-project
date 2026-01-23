@@ -42,34 +42,23 @@ app.get("/movies", async (req, res) => {
 app.get("/movies/:movieId", async (req, res) => {
   const payload = await api.loadMovie(req.params.movieId);
 
-  // stöd både payload.data och payload direkt
-  const raw = payload?.data ?? payload;
+  const raw = payload?.data ?? payload;   // stöd både {data: ...} och direkt obj
 
-  // stöd både Strapi (raw.attributes) och flatten (raw)
+  if (!raw) {
+    return res.status(404).render("404");
+  }
+
   const movie = {
-    id: raw?.id,
-    ...(raw?.attributes ?? raw),
+    id: raw.id,
+    ...(raw.attributes ?? raw),
   };
 
   const introHtml = movie.intro ? marked.parse(movie.intro) : null;
 
-  res.render("movie-detail", {
+  return res.render("movie-detail", {
     movie: { ...movie, introHtml },
   });
 });
-
-
-/*app.get("/movies/:movieId", async (req, res) => {
-
-
-  const payload = await api.loadMovie(req.params.movieId);
-  const m = payload?.data ?? payload;
-  const movie = {
-    id: m.id,
-    ...(m.attributes ?? m),
-  };
-  res.render("movie-detail", { movie });
-});*/
 
   // Front-sidan
   app.use(express.static("."));
