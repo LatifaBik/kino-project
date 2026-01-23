@@ -1,11 +1,14 @@
 extends layout/main
 
 block content
-  h1.movie-detail The movie site
+  h1.movie-list The movie list
 
-  a.movie-back-link(href="/movies") ← Back to front site
+  a.movies-back-link(href="/") ← Back to front site
 
-  ul
+  p.movies-intro Select a movie to view details
+
+  ul.movies-list
     each movie in movies
-      li
-        a(href=`/movies/${movie.id}`)= movie.title
+      li.movies-list__item
+        a.movies-list__link(href=`/movies/${movie.id}`)= movie.title
+
