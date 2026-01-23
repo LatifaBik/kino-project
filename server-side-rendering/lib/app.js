@@ -1,4 +1,5 @@
 import express from "express";
+import { marked } from "marked";
 /*import { engine } from "express-handlebars";*/
 
 
@@ -39,6 +40,26 @@ app.get("/movies", async (req, res) => {
 });
 
 app.get("/movies/:movieId", async (req, res) => {
+  const payload = await api.loadMovie(req.params.movieId);
+
+  // stöd både payload.data och payload direkt
+  const raw = payload?.data ?? payload;
+
+  // stöd både Strapi (raw.attributes) och flatten (raw)
+  const movie = {
+    id: raw?.id,
+    ...(raw?.attributes ?? raw),
+  };
+
+  const introHtml = movie.intro ? marked.parse(movie.intro) : null;
+
+  res.render("movie-detail", {
+    movie: { ...movie, introHtml },
+  });
+});
+
+
+/*app.get("/movies/:movieId", async (req, res) => {
 
 
   const payload = await api.loadMovie(req.params.movieId);
@@ -48,7 +69,7 @@ app.get("/movies/:movieId", async (req, res) => {
     ...(m.attributes ?? m),
   };
   res.render("movie-detail", { movie });
-});
+});*/
 
   // Front-sidan
   app.use(express.static("."));
