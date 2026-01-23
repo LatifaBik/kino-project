@@ -17,6 +17,8 @@ async function loadMovie(id) {
 } 
 
 function flattenMovie(movie) {
+if (!movie) return null;
+
   return {
     id: movie.id,
     ...movie.attributes,

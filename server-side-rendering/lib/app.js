@@ -1,24 +1,31 @@
 import express from "express";
-import { engine } from "express-handlebars";
+import { marked } from "marked";
+/*import { engine } from "express-handlebars";*/
+
+
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 export default function initApp(api) {
   const app = express(); 
 
-  app.engine(
-    "handlebars",
+  /*app.engine(
+    "pug",
     engine({
       defaultLayout: "main",
-      layoutsDir: "./server-side-rendering/templates/layout",
-      partialsDir: "./server-side-rendering/templates/partials",
+      layoutsDir: "./server-side-rendering/pug-templates/layout",
+      partialsDir: "./server-side-rendering/pug-templates/partials",
     })
-  );
+  );*/
 
-  app.set("view engine", "handlebars");
-  app.set("views", "./server-side-rendering/templates");
+  app.set("view engine", "pug");
+  app.set("views", path.join(__dirname, "../pug-templates"));
 
-  app.use("/static", express.static("./server-side-rendering/static"));
+  app.use("/static", express.static(path.join(__dirname, "../static")));
 
 
 app.get("/movies", async (req, res) => {
@@ -33,15 +40,24 @@ app.get("/movies", async (req, res) => {
 });
 
 app.get("/movies/:movieId", async (req, res) => {
-
-
   const payload = await api.loadMovie(req.params.movieId);
-  const m = payload?.data ?? payload;
+
+  const raw = payload?.data ?? payload;   // stöd både {data: ...} och direkt obj
+
+  if (!raw) {
+    return res.status(404).render("404");
+  }
+
   const movie = {
-    id: m.id,
-    ...(m.attributes ?? m),
+    id: raw.id,
+    ...(raw.attributes ?? raw),
   };
-  res.render("movie-detail", { movie });
+
+  const introHtml = movie.intro ? marked.parse(movie.intro) : null;
+
+  return res.render("movie-detail", {
+    movie: { ...movie, introHtml },
+  });
 });
 
   // Front-sidan

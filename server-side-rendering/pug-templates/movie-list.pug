@@ -1,0 +1,14 @@
+extends layout/main
+
+block content
+  h1.movie-list The movie list
+
+  a.movies-back-link(href="/") ← Back to front site
+
+  p.movies-intro Select a movie to view details
+
+  ul.movies-list
+    each movie in movies
+      li.movies-list__item
+        a.movies-list__link(href=`/movies/${movie.id}`)= movie.title
+

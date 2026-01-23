@@ -1,0 +1,30 @@
+header.header
+  .header__theme
+    button.header__theme-btn.header__theme-btn--light(aria-label="toggle light")
+      img.header__theme-icon(src="/static/assets/toggle2-light.png", alt="Light mode icon")
+
+    button.header__theme-btn.header__theme-btn--dark(aria-label="toggle dark")
+      img.header__theme-icon(src="/static/assets/toggle1-dark.png", alt="Dark mode icon")
+
+  .header__top
+    button.header__menu-button(aria-label="Menu") ☰ MENY
+
+    img.header__logo-dark(src="/static/assets/logo1-dark.png", alt="Logga - Kino bio")
+    img.header__logo-light(src="/static/assets/logo2-light.png", alt="Logga - Kino bio")
+
+    .auth-buttons
+      button.header__member-btn(aria-label="Logga in") Member
+      button.header__login-btn(aria-label="Logga in") JOIN / LOGIN
+      button.open-register Registrera dig
+
+  .login
+    .login__modal
+      .login__content
+        button.login__close(aria-label="Stäng") ✕
+        h2.login__title Logga in
+        form.login__form
+          input.login__input(type="email", placeholder="E-post", name="email", required)
+          input.login__input(type="password", placeholder="Lösenord", name="password", required)
+
+          a.login__forgot(href="#") Glömt lösenord?
+          button.login__submit(type="submit") Logga in
